@@ -9,7 +9,7 @@
     >
     <template v-slot:body-cell-action="props">
       <q-btn color="negative" flat round  icon="delete" @click="remove(props.row)" />
-      <q-btn color="secondary" flat round  icon="edit" @click="editRow()" />
+      <q-btn color="secondary" flat round  icon="edit" @click="edit()" />
     </template>
     </q-table>
     <q-btn
@@ -103,7 +103,8 @@ export default {
         const querySnapshot = await getDocs(collection(db, "patient"));
         querySnapshot.forEach((doc) => {
           //時間戳格式化
-          var date = moment(new Date(doc.data().patientBirth.seconds * 1000)).format('YYYY-MM-DD');
+          var date = moment(doc.data().patientBirth).format('YYYY-MM-DD');
+          console.log(date);
           //symptom推入陣列
           for(var i = 0; i < doc.data().symptom.length; i++){
             this.symptoms.push(
@@ -150,8 +151,8 @@ export default {
         color: 'accent'
         })
       },
-      editRow(row) {
-      // Implement logic to edit the row in the data array or Firestore if needed
+      edit(row) {
+        console.log("Here",row);
       },
 
     },

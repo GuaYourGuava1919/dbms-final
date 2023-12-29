@@ -77,7 +77,12 @@ export default {
         { name: 'symCase', align: 'center', label: '過敏原案例數', field: 'symCase', sortable: true }
       ],
       data: [],
-      result: [],
+      result: [
+        {symID: '#',
+        symName: '',
+        symCategory: '',
+        symCase: ''},
+      ],
       searchInfo: '',
       addSymptom: false,
       symptomInfo: {
